@@ -4,17 +4,18 @@ require_relative "statement.rb"
 
 class Bank 
   attr_reader :choice
-  attr_accessor :deposit, :withdraw, :statement
+  attr_accessor :deposit, :withdraw, :statement, :balance
   
-  def initialize(deposit=Deposit.new, withdraw=Withdraw.new, statement=Statement.new)
+  def initialize(deposit=Deposit.new, withdraw=Withdraw.new, statement=Statement.new, balance=0.0)
     @deposit = deposit
     @withdraw = withdraw
     @statement = statement
+    @balance = balance
   end
   
   def main_menu
      read_menu
-     @amount = gets.chomp
+     @choice = gets.chomp
      display_action
   end
   
@@ -28,11 +29,14 @@ class Bank
   end
   
   def display_action
-    case @amount
+    case @choice
      when "1"
        puts "How much would you like to deposit?"
        amount = gets.chomp
        self.deposit = Deposit.new(amount)
+       File.open("./lib/account.txt", "a") do |file|
+         file.write "#{self.deposit.date}  ||   #{self.deposit.amount}    ||          ||     #{self.balance += self.deposit.amount.to_i}   \n"
+       end
      when "2" 
        puts "How much would you like to withdraw?"
        amount = gets.chomp
@@ -43,6 +47,18 @@ class Bank
      else
        puts "Please choose 1, 2 or 3"
      end
+     confirm
+  end
+  
+  def confirm
+    if @choice == "1"
+      "#{self.deposit.amount} deposited successfully"
+    elsif @choice == "2"
+      "#{self.withdraw.amount} withdrawn successfully"
+    else
+      "thank you"
+    end
+    
   end
   
 end
