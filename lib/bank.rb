@@ -1,13 +1,15 @@
 require_relative "deposit.rb"
 require_relative "withdraw.rb"
+require_relative "statement.rb"
 
 class Bank 
   attr_reader :choice
-  attr_accessor :deposit, :withdraw
+  attr_accessor :deposit, :withdraw, :statement
   
-  def initialize(deposit=Deposit.new, withdraw=Withdraw.new)
+  def initialize(deposit=Deposit.new, withdraw=Withdraw.new, statement=Statement.new)
     @deposit = deposit
     @withdraw = withdraw
+    @statement = statement
   end
   
   def main_menu
@@ -37,7 +39,7 @@ class Bank
        self.withdraw = Withdraw.new(amount)
      when "3"
        puts "Here is your statement"
-       @choice = gets.chomp
+       self.statement.print
      else
        puts "Please choose 1, 2 or 3"
      end

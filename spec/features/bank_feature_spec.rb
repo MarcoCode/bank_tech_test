@@ -27,4 +27,12 @@
        expect(@bank.withdraw.amount).not_to eq 0
      end
    end
+   
+   context "User chooses to print the statement" do
+     it "prints the statement" do
+       allow(@bank).to receive(:gets) { "3\n"}
+       expect{ @bank.main_menu }.to output("What would you like to do?\n1 - Deposit\n2 - Withdraw\n3 - Print Statement\nHere is your statement\n").to_stdout
+       expect(@bank.statement.print).to eq "No recent transactions"
+     end
+   end
  end
