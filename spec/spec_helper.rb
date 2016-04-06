@@ -1,4 +1,4 @@
-require_relative "../lib/bank.rb"
+require_relative "../lib/account.rb"
 
 RSpec.configure do |config|
  

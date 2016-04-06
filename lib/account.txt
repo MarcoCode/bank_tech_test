@@ -1,1 +1,1 @@
-Date        ||  credit   ||  debit   ||    balance
+  DATE  ||  CREDIT  || DEBIT || BALANCE  
