@@ -1,11 +1,7 @@
 # The Bank Tech Test
 
->When in doubt, go for the simplest solution
+My initial approach is to draw a sketch of the design and then TDD a prototype in Ruby
 
-### Requirements
-* Deposits, withdrawal
-* Account statement (date, amount, balance)
-* Statement printing
 
 ### Acceptance criteria
 
